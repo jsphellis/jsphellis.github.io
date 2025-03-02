@@ -56,7 +56,7 @@
 
 .category-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 15px 30px rgba(2, 41, 84, 0.15);
 }
 
 .category-icon {
@@ -110,7 +110,7 @@
 
 .post-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 15px 30px rgba(2, 41, 84, 0.15);
 }
 
 .post-image {
