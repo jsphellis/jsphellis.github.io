@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Joseph Ellis - Blog">
+    <title>Joseph Ellis - Blog</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="blog-styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="logo">
+                <a href="index.html">Joseph Ellis</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#experience">Experience</a></li>
+                <li><a href="index.html#projects">Projects</a></li>
+                <li><a href="index.html#skills">Skills</a></li>
+                <li><a href="index.html#honors">Honors</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Blog Header -->
+    <header class="blog-header">
+        <div class="blog-header-content">
+            <h1>My Blog</h1>
+            <p>Thoughts, projects, and explorations in data science, machine learning, and more</p>
+        </div>
+    </header>
+
+    <!-- Blog Categories -->
+    <section class="blog-categories">
+        <div class="container">
+            <h2>Blog Categories</h2>
+            <div class="category-grid">
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Machine Learning</h3>
+                    <p>Explorations in neural networks, deep learning, and AI applications</p>
+                    <a href="blog-ml.html" class="btn primary">Read Posts</a>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Data Science</h3>
+                    <p>Data analysis, visualization, and insights from various projects</p>
+                    <a href="blog-data.html" class="btn primary">Read Posts</a>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <h3>Project Progress</h3>
+                    <p>Updates and development logs for ongoing projects</p>
+                    <a href="blog-projects.html" class="btn primary">Read Posts</a>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Insights & Tutorials</h3>
+                    <p>Tutorials, guides, and insights from my learning journey</p>
+                    <a href="blog-tutorials.html" class="btn primary">Read Posts</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recent Posts -->
+    <section class="recent-posts">
+        <div class="container">
+            <h2>Recent Posts</h2>
+            <div class="posts-grid">
+                <!-- Example post 1 -->
+                <div class="post-card">
+                    <div class="post-image" style="background-image: url('https://via.placeholder.com/800x450');">
+                        <div class="post-category">Machine Learning</div>
+                    </div>
+                    <div class="post-content">
+                        <h3 class="post-title">Exploring Transformer Models for NLP Tasks</h3>
+                        <p class="post-date"><i class="far fa-calendar-alt"></i> June 15, 2024</p>
+                        <p class="post-excerpt">An in-depth look at how transformer architectures are revolutionizing natural language processing tasks...</p>
+                        <a href="blog-ml/transformer-models.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Example post 2 -->
+                <div class="post-card">
+                    <div class="post-image" style="background-image: url('https://via.placeholder.com/800x450');">
+                        <div class="post-category">Data Science</div>
+                    </div>
+                    <div class="post-content">
+                        <h3 class="post-title">Visualizing Complex Datasets with Python</h3>
+                        <p class="post-date"><i class="far fa-calendar-alt"></i> June 8, 2024</p>
+                        <p class="post-excerpt">Techniques and tools for creating insightful visualizations from complex, multi-dimensional datasets...</p>
+                        <a href="blog-data/visualizing-complex-data.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Example post 3 -->
+                <div class="post-card">
+                    <div class="post-image" style="background-image: url('https://via.placeholder.com/800x450');">
+                        <div class="post-category">Project Progress</div>
+                    </div>
+                    <div class="post-content">
+                        <h3 class="post-title">TikTok Virality Predictor: Month 1 Progress</h3>
+                        <p class="post-date"><i class="far fa-calendar-alt"></i> May 30, 2024</p>
+                        <p class="post-excerpt">Updates on the development of my TikTok virality prediction model, challenges faced, and solutions implemented...</p>
+                        <a href="blog-projects/tiktok-predictor-month1.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Subscribe Section -->
+            <div class="subscribe-section">
+                <h3>Stay Updated</h3>
+                <p>Subscribe to receive notifications about new blog posts</p>
+                <form class="subscribe-form">
+                    <input type="email" placeholder="Your email address" required>
+                    <button type="submit" class="btn primary">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Joseph Manning Ellis. All rights reserved.</p>
+    </footer>
+
+    <!-- Custom JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html> 

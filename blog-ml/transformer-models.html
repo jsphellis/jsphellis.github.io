@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Exploring Transformer Models for NLP Tasks - Joseph Ellis Blog">
+    <title>Exploring Transformer Models for NLP Tasks - Joseph Ellis</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../blog-styles.css">
+    <!-- Syntax highlighting (optional) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="logo">
+                <a href="../index.html">Joseph Ellis</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../index.html#home">Home</a></li>
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#experience">Experience</a></li>
+                <li><a href="../index.html#projects">Projects</a></li>
+                <li><a href="../index.html#skills">Skills</a></li>
+                <li><a href="../index.html#honors">Honors</a></li>
+                <li><a href="../blog.html" class="active">Blog</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Blog Post -->
+    <div class="blog-post">
+        <div class="blog-post-header">
+            <h1 class="blog-post-title">Exploring Transformer Models for NLP Tasks</h1>
+            <div class="blog-post-meta">
+                <span><i class="far fa-calendar-alt"></i> June 15, 2024</span>
+                <span><i class="fas fa-tag"></i> Machine Learning</span>
+                <span><i class="far fa-clock"></i> 10 min read</span>
+            </div>
+            <img src="https://via.placeholder.com/1200x600" alt="Transformer Architecture" style="width: 100%; border-radius: 10px;">
+        </div>
+        
+        <div class="blog-post-content">
+            <p>
+                Transformer models have revolutionized the field of natural language processing (NLP) since their introduction in the paper "Attention Is All You Need" by Vaswani et al. in 2017. In this blog post, I'll explore how transformer architectures work and why they've become the foundation for state-of-the-art NLP models like BERT, GPT, and T5.
+            </p>
+            
+            <h2>Understanding the Transformer Architecture</h2>
+            <p>
+                The key innovation of the transformer architecture is the self-attention mechanism, which allows the model to weigh the importance of different words in a sentence when processing each word. Unlike recurrent neural networks (RNNs) that process text sequentially, transformers can process all words in parallel, making them much more efficient to train.
+            </p>
+            <p>
+                The transformer architecture consists of two main components:
+            </p>
+            <ul>
+                <li><strong>Encoder:</strong> Processes the input sequence and builds representations</li>
+                <li><strong>Decoder:</strong> Generates the output sequence based on the encoder's representations</li>
+            </ul>
+            
+            <h3>Self-Attention Mechanism</h3>
+            <p>
+                The self-attention mechanism is what makes transformers so powerful. For each word in a sentence, self-attention calculates how much focus to put on other words when encoding the current word. This is done by computing query, key, and value vectors for each word and using them to calculate attention scores.
+            </p>
+            <p>
+                Here's a simplified implementation of self-attention in PyTorch:
+            </p>
+            <pre><code class="language-python">
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+
+class SelfAttention(nn.Module):
+    def __init__(self, embed_size, heads):
+        super(SelfAttention, self).__init__()
+        self.embed_size = embed_size
+        self.heads = heads
+        self.head_dim = embed_size // heads
+        
+        assert (self.head_dim * heads == embed_size), "Embed size needs to be divisible by heads"
+        
+        self.values = nn.Linear(self.head_dim, self.head_dim, bias=False)
+        self.keys = nn.Linear(self.head_dim, self.head_dim, bias=False)
+        self.queries = nn.Linear(self.head_dim, self.head_dim, bias=False)
+        self.fc_out = nn.Linear(heads * self.head_dim, embed_size)
+        
+    def forward(self, values, keys, query, mask):
+        N = query.shape[0]
+        value_len, key_len, query_len = values.shape[1], keys.shape[1], query.shape[1]
+        
+        # Split embedding into self.heads pieces
+        values = values.reshape(N, value_len, self.heads, self.head_dim)
+        keys = keys.reshape(N, key_len, self.heads, self.head_dim)
+        queries = query.reshape(N, query_len, self.heads, self.head_dim)
+        
+        values = self.values(values)
+        keys = self.keys(keys)
+        queries = self.queries(queries)
+        
+        # Scaled dot-product attention
+        energy = torch.einsum("nqhd,nkhd->nhqk", [queries, keys])
+        
+        if mask is not None:
+            energy = energy.masked_fill(mask == 0, float("-1e20"))
+        
+        attention = torch.softmax(energy / (self.embed_size ** (1/2)), dim=3)
+        
+        out = torch.einsum("nhql,nlhd->nqhd", [attention, values]).reshape(
+            N, query_len, self.heads * self.head_dim
+        )
+        
+        out = self.fc_out(out)
+        return out
+            </code></pre>
+            
+            <h2>Popular Transformer-Based Models</h2>
+            <p>
+                Several transformer-based models have achieved state-of-the-art results on various NLP tasks:
+            </p>
+            
+            <h3>BERT (Bidirectional Encoder Representations from Transformers)</h3>
+            <p>
+                BERT, developed by Google, uses only the encoder part of the transformer architecture. It's pre-trained on a large corpus of text using masked language modeling and next sentence prediction tasks. BERT excels at understanding context and is particularly effective for tasks like sentiment analysis, named entity recognition, and question answering.
+            </p>
+            
+            <h3>GPT (Generative Pre-trained Transformer)</h3>
+            <p>
+                GPT, developed by OpenAI, uses the decoder part of the transformer architecture. It's trained to predict the next word in a sequence, making it excellent for text generation tasks. The latest versions (GPT-3 and GPT-4) have shown remarkable capabilities in generating human-like text and solving complex reasoning tasks.
+            </p>
+            
+            <h3>T5 (Text-to-Text Transfer Transformer)</h3>
+            <p>
+                T5, developed by Google, frames all NLP tasks as text-to-text problems. This unified approach allows it to handle multiple tasks with a single model architecture. T5 has achieved state-of-the-art results on benchmarks covering translation, summarization, question answering, and more.
+            </p>
+            
+            <h2>Implementing a Simple Transformer in PyTorch</h2>
+            <p>
+                Let's look at how we might implement a basic transformer encoder layer in PyTorch:
+            </p>
+            <pre><code class="language-python">
+class TransformerBlock(nn.Module):
+    def __init__(self, embed_size, heads, dropout, forward_expansion):
+        super(TransformerBlock, self).__init__()
+        self.attention = SelfAttention(embed_size, heads)
+        self.norm1 = nn.LayerNorm(embed_size)
+        self.norm2 = nn.LayerNorm(embed_size)
+        
+        self.feed_forward = nn.Sequential(
+            nn.Linear(embed_size, forward_expansion * embed_size),
+            nn.ReLU(),
+            nn.Linear(forward_expansion * embed_size, embed_size),
+        )
+        
+        self.dropout = nn.Dropout(dropout)
+        
+    def forward(self, value, key, query, mask):
+        attention = self.attention(value, key, query, mask)
+        
+        # Add & Norm
+        x = self.dropout(self.norm1(attention + query))
+        forward = self.feed_forward(x)
+        out = self.dropout(self.norm2(forward + x))
+        return out
+            </code></pre>
+            
+            <h2>Fine-tuning Transformers for Specific Tasks</h2>
+            <p>
+                One of the most powerful aspects of transformer models is their ability to be fine-tuned for specific tasks. By starting with a pre-trained model and updating the weights on a smaller, task-specific dataset, we can achieve excellent performance with relatively little data.
+            </p>
+            <p>
+                Here's a simplified example of how to fine-tune a pre-trained BERT model for sentiment analysis using the Hugging Face Transformers library:
+            </p>
+            <pre><code class="language-python">
+from transformers import BertTokenizer, BertForSequenceClassification
+from torch.optim import AdamW
+from torch.utils.data import DataLoader, Dataset
+
+# Load pre-trained model and tokenizer
+tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
+model = BertForSequenceClassification.from_pretrained('bert-base-uncased', num_labels=2)
+
+# Prepare your dataset
+class SentimentDataset(Dataset):
+    def __init__(self, texts, labels, tokenizer, max_length=128):
+        self.texts = texts
+        self.labels = labels
+        self.tokenizer = tokenizer
+        self.max_length = max_length
+        
+    def __len__(self):
+        return len(self.texts)
+        
+    def __getitem__(self, idx):
+        text = self.texts[idx]
+        label = self.labels[idx]
+        
+        encoding = self.tokenizer(
+            text,
+            add_special_tokens=True,
+            max_length=self.max_length,
+            return_token_type_ids=False,
+            padding='max_length',
+            truncation=True,
+            return_attention_mask=True,
+            return_tensors='pt',
+        )
+        
+        return {
+            'input_ids': encoding['input_ids'].flatten(),
+            'attention_mask': encoding['attention_mask'].flatten(),
+            'labels': torch.tensor(label, dtype=torch.long)
+        }
+
+# Create data loaders
+train_dataset = SentimentDataset(train_texts, train_labels, tokenizer)
+train_loader = DataLoader(train_dataset, batch_size=16, shuffle=True)
+
+# Fine-tuning
+optimizer = AdamW(model.parameters(), lr=2e-5)
+
+for epoch in range(3):
+    model.train()
+    for batch in train_loader:
+        optimizer.zero_grad()
+        
+        input_ids = batch['input_ids'].to(device)
+        attention_mask = batch['attention_mask'].to(device)
+        labels = batch['labels'].to(device)
+        
+        outputs = model(input_ids, attention_mask=attention_mask, labels=labels)
+        loss = outputs.loss
+        
+        loss.backward()
+        optimizer.step()
+            </code></pre>
+            
+            <h2>Conclusion</h2>
+            <p>
+                Transformer models have fundamentally changed how we approach NLP tasks. Their ability to capture long-range dependencies and process text in parallel has led to significant improvements in performance across a wide range of applications.
+            </p>
+            <p>
+                As these models continue to evolve, we're seeing them applied to increasingly complex tasks and even to domains beyond NLP, such as computer vision and multimodal learning. The future of transformer models is exciting, and I look forward to exploring their capabilities further in upcoming projects.
+            </p>
+        </div>
+        
+        <!-- Related Posts -->
+        <div class="related-posts">
+            <h3>Related Posts</h3>
+            <div class="posts-grid">
+                <div class="post-card">
+                    <div class="post-image" style="background-image: url('https://via.placeholder.com/800x450');">
+                        <div class="post-category">Machine Learning</div>
+                    </div>
+                    <div class="post-content">
+                        <h3 class="post-title">Fine-tuning BERT for Text Classification</h3>
+                        <p class="post-date"><i class="far fa-calendar-alt"></i> May 20, 2024</p>
+                        <p class="post-excerpt">A step-by-step guide to fine-tuning BERT models for text classification tasks...</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="post-card">
+                    <div class="post-image" style="background-image: url('https://via.placeholder.com/800x450');">
+                        <div class="post-category">Machine Learning</div>
+                    </div>
+                    <div class="post-content">
+                        <h3 class="post-title">Building a Question Answering System with T5</h3>
+                        <p class="post-date"><i class="far fa-calendar-alt"></i> June 5, 2024</p>
+                        <p class="post-excerpt">How to implement a robust question answering system using the T5 transformer model...</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Joseph Manning Ellis. All rights reserved.</p>
+    </footer>
+
+    <!-- Custom JavaScript -->
+    <script src="../script.js"></script>
+    <!-- Syntax highlighting (optional) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/plugins/autoloader/prism-autoloader.min.js"></script>
+</body>
+</html> 
