@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Personal Portfolio Website">
-    <title>Your Name - Portfolio</title>
+    <meta name="description" content="Joseph Manning Ellis - Data Scientist & LLM Engineer Portfolio">
+    <title>Joseph Manning Ellis - Portfolio</title>
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <!-- Custom CSS -->
@@ -15,13 +15,15 @@
     <nav class="navbar">
         <div class="nav-content">
             <div class="logo">
-                <a href="#home">Portfolio</a>
+                <a href="#home">Joseph Ellis</a>
             </div>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#skills">Skills</a></li>
+                <li><a href="#honors">Honors</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
@@ -30,8 +32,8 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content">
-            <h1>Hi, I'm <span class="highlight">Your Name</span></h1>
-            <p class="tagline">Software Developer | Problem Solver | Tech Enthusiast</p>
+            <h1>Hi, I'm <span class="highlight">Joseph Manning Ellis</span></h1>
+            <p class="tagline">Data Scientist | LLM Engineer | AI Enthusiast</p>
             <div class="cta-buttons">
                 <a href="#projects" class="btn primary">View My Work</a>
                 <a href="#contact" class="btn secondary">Contact Me</a>
@@ -44,8 +46,55 @@
         <h2>About Me</h2>
         <div class="about-content">
             <div class="about-text">
-                <p>Welcome to my portfolio! I'm a passionate software developer with a focus on creating efficient and user-friendly solutions. I love turning complex problems into simple, beautiful, and intuitive designs.</p>
-                <p>With a strong foundation in modern technologies and best practices, I strive to write clean, maintainable code that makes a difference.</p>
+                <p>I'm a Data Scientist and LLM Engineer with expertise in machine learning, AI systems, and data analytics. Currently pursuing a Master's in Applied Data Science at USC's Viterbi School of Engineering, I combine technical knowledge with practical experience in developing innovative AI solutions.</p>
+                <p>With a background in Data Analytics from Chapman University and experience as an LLM Engineer at PushButton.AI and co-founder of Ovrsee, I specialize in building RAG systems, implementing API services, and developing machine learning models for real-world applications.</p>
+            </div>
+            <div class="education">
+                <h3>Education</h3>
+                <div class="education-item">
+                    <h4>University of Southern California</h4>
+                    <p class="degree">Master of Science in Applied Data Science</p>
+                    <p class="date">August 2024 - May 2026</p>
+                    <p class="details">Viterbi School of Engineering | GPA: 3.86</p>
+                </div>
+                <div class="education-item">
+                    <h4>Chapman University</h4>
+                    <p class="degree">Bachelor of Science in Data Analytics</p>
+                    <p class="date">August 2020 - May 2024</p>
+                    <p class="details">Fowler School of Engineering | GPA: 3.86</p>
+                    <p class="details">Minor in Business Administration</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+        <h2>Professional Experience</h2>
+        <div class="experience-content">
+            <div class="experience-item">
+                <h3>LLM Engineer</h3>
+                <p class="company">PushButton.AI - Course Building Program</p>
+                <p class="date">January 2024 - Present</p>
+                <p class="location">Orange, California</p>
+                <ul class="responsibilities">
+                    <li>Implement packages and functions for high-token-output RAG systems leveraging recursive calls and prompt engineering, increasing model output capacity by 5×</li>
+                    <li>Research and deploy 1 Docker and up to 5 Redis servers on DigitalOcean to enable API-based utilization of RAG systems and course-building programs</li>
+                    <li>Design and refine prompts to produce 10,000-word program outputs as functional HTML code, ensuring readability from 6th to 12th grade levels</li>
+                    <li>Modify agentic workflows to convert course outlines into 12 lessons, deploying task IDs and updates for real-time tracking</li>
+                </ul>
+            </div>
+            <div class="experience-item">
+                <h3>Co-Founder</h3>
+                <p class="company">Ovrsee</p>
+                <p class="date">January 2024 - Present</p>
+                <p class="location">Los Angeles, California</p>
+                <ul class="responsibilities">
+                    <li>Develop API services via Google Cloud Functions handling TikTok OAuth workflows, processing 48+ daily requests per user</li>
+                    <li>Streamline user metric aggregation (daily/weekly/monthly) using Firebase with automated Cloud Task scheduling - achieving 90% front-end speed improvements</li>
+                    <li>Integrate API operations with Firebase to manage user authentication while structuring database storage systems for 3 customers: brand owner, manager, and creator</li>
+                    <li>Enforce encrypted key management and validations for API requests, safeguarding TikTok API access and user data integrity</li>
+                </ul>
             </div>
         </div>
     </section>
@@ -54,13 +103,25 @@
     <section id="projects" class="projects">
         <h2>My Projects</h2>
         <div class="project-grid">
-            <!-- Project cards will be added here -->
             <div class="project-card">
-                <h3>Project Title</h3>
-                <p>Project description goes here. Explain what the project does and the technologies used.</p>
+                <h3>TikTok Virality Predictor</h3>
+                <p>Trained a computer vision model built on ResNet (2+1)D leveraging PyTorch to predict virality from TikTok video input. Wrote web scraping scripts to download and process TikTok videos using Python and Pandas to engineer virality score.</p>
                 <div class="project-links">
-                    <a href="#" target="_blank"><i class="fab fa-github"></i> Code</a>
-                    <a href="#" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                    <a href="https://github.com/jsphellis" target="_blank"><i class="fab fa-github"></i> Code</a>
+                </div>
+            </div>
+            <div class="project-card">
+                <h3>DrugAI-CVAE</h3>
+                <p>Built and trained an Autoregressive CVAE in PyTorch to generate novel drug molecule sequences (SMILE) based on target proteins.</p>
+                <div class="project-links">
+                    <a href="https://github.com/jsphellis" target="_blank"><i class="fab fa-github"></i> Code</a>
+                </div>
+            </div>
+            <div class="project-card">
+                <h3>Human Activity in VR Research</h3>
+                <p>Designed 13 modular functions to generate advanced 3D models and visualize VR hand/object trajectories through dynamic line charts. Leveraged movement pattern visualizations to design novel rule-based system for identifying and labelling user actions. Implemented unsupervised ML models analyzing 8 movement trajectory types for VR activity prediction using spatial pattern.</p>
+                <div class="project-links">
+                    <a href="https://github.com/jsphellis" target="_blank"><i class="fab fa-github"></i> Code</a>
                 </div>
             </div>
         </div>
@@ -70,25 +131,74 @@
     <section id="skills" class="skills">
         <h2>Skills & Technologies</h2>
         <div class="skills-grid">
-            <!-- Add your skills here -->
             <div class="skill-category">
-                <h3>Languages</h3>
+                <h3>Programming Languages</h3>
                 <ul>
-                    <li>JavaScript</li>
                     <li>Python</li>
-                    <li>Java</li>
-                    <!-- Add more -->
+                    <li>R</li>
+                    <li>SQL</li>
+                    <li>HTML</li>
                 </ul>
             </div>
             <div class="skill-category">
-                <h3>Frameworks & Libraries</h3>
+                <h3>Data Analysis & Visualization</h3>
                 <ul>
-                    <li>React</li>
-                    <li>Node.js</li>
-                    <li>Express</li>
-                    <!-- Add more -->
+                    <li>Pandas</li>
+                    <li>ggplot</li>
+                    <li>Plotly</li>
+                    <li>NumPy</li>
+                    <li>Matplotlib</li>
                 </ul>
             </div>
+            <div class="skill-category">
+                <h3>Machine Learning</h3>
+                <ul>
+                    <li>Keras</li>
+                    <li>Tensorflow</li>
+                    <li>PyTorch</li>
+                    <li>LLMs</li>
+                    <li>NLP</li>
+                    <li>Langchain</li>
+                    <li>Computer Vision</li>
+                    <li>Deep Learning</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3>Software Deployment</h3>
+                <ul>
+                    <li>Google Cloud Projects</li>
+                    <li>Docker</li>
+                    <li>git</li>
+                    <li>Amazon Web Services</li>
+                    <li>Firebase</li>
+                    <li>REST API</li>
+                    <li>Flask</li>
+                    <li>Redis</li>
+                    <li>Cloud</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Honors Section -->
+    <section id="honors" class="honors">
+        <h2>Honors & Awards</h2>
+        <div class="honors-content">
+            <ul class="honors-list">
+                <li>
+                    <span class="honor-title">Provosts List</span>
+                    <span class="honor-org">Chapman University</span>
+                    <span class="honor-details">GPA above 3.8 for a semester (2020-2024)</span>
+                </li>
+                <li>
+                    <span class="honor-title">Program Honors</span>
+                    <span class="honor-org">Chapman University</span>
+                </li>
+                <li>
+                    <span class="honor-title">Excellence in Computing Studies</span>
+                    <span class="honor-org">Association for Computing Machinery</span>
+                </li>
+            </ul>
         </div>
     </section>
 
@@ -97,11 +207,16 @@
         <h2>Get In Touch</h2>
         <div class="contact-content">
             <div class="contact-info">
-                <p>I'm always open to new opportunities and interesting projects. Feel free to reach out!</p>
+                <p>I'm always open to new opportunities and interesting projects in data science and AI. Feel free to reach out!</p>
+                <div class="contact-details">
+                    <p><i class="fas fa-map-marker-alt"></i> Los Angeles, California</p>
+                    <p><i class="fas fa-phone"></i> 502-655-6998</p>
+                    <p><i class="fas fa-envelope"></i> jsphellis.2020@gmail.com</p>
+                </div>
                 <div class="social-links">
-                    <a href="https://github.com/yourusername" target="_blank"><i class="fab fa-github"></i></a>
-                    <a href="https://linkedin.com/in/yourusername" target="_blank"><i class="fab fa-linkedin"></i></a>
-                    <a href="mailto:your.email@example.com"><i class="fas fa-envelope"></i></a>
+                    <a href="https://github.com/jsphellis" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://linkedin.com/in/jsphellis" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="2025_Resume.pdf" target="_blank"><i class="fas fa-file-pdf"></i></a>
                 </div>
             </div>
         </div>
@@ -109,7 +224,7 @@
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2024 Your Name. All rights reserved.</p>
+        <p>&copy; 2024 Joseph Manning Ellis. All rights reserved.</p>
     </footer>
 
     <!-- Custom JavaScript -->
