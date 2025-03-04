@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="TikTok Virality Research - Computer Vision Models and the Cultural Zeitgeist">
+    <title>TikTok Virality Research | Joseph Ellis</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../blog-styles.css">
+    <style>
+        .pdf-container {
+            width: 100%;
+            height: 800px;
+            margin: 2rem 0;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+        }
+        
+        .pdf-viewer {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            padding: 0.8rem 1.5rem;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .download-btn:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+            box-shadow: var(--box-shadow);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="logo">
+                <a href="../index.html">Joseph Ellis</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../index.html#home">Home</a></li>
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#experience">Experience</a></li>
+                <li><a href="../index.html#projects">Projects</a></li>
+                <li><a href="../index.html#skills">Skills</a></li>
+                <li><a href="../index.html#honors">Honors</a></li>
+                <li><a href="../blog.html" class="active">Blog</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="blog-post">
+        <div class="blog-post-header">
+            <h1 class="blog-post-title">The Viral Vision: Computer Vision Models and the Cultural Zeitgeist</h1>
+            <div class="blog-post-meta">
+                <span><i class="fas fa-tag"></i> Machine Learning</span>
+            </div>
+            <img src="TikTokVirality/bestworst.png" alt="TikTok Virality Research" style="width: 100%; border-radius: 10px;">
+        </div>
+        
+        <div class="blog-post-content">            
+            <!-- PDF Viewer -->
+            <a href="TikTokVirality/Report.pdf" class="download-btn" download>
+                <i class="fas fa-download"></i> Download PDF
+            </a>
+            
+            <div class="pdf-container">
+                <iframe class="pdf-viewer" src="TikTokVirality/Report.pdf"></iframe>
+            </div>
+            
+            <!-- References Section -->
+            <h2>References</h2>
+            <ol class="references">
+                <li id="ref1">Du Tran, Heng Wang, Lorenzo Torresani, Jamie Ray, Yann LeCun, and Manohar Paluri. "A Closer Look at Spatiotemporal Convolutions for Action Recognition." <em>Journal of Machine Learning Research</em>, 19(1):1-35, 2018.</li>
+                <li id="ref2">Adam Bielski and Tomasz Trzcinski. "Pay Attention to Virality: Understanding Popularity of Social Media Videos with the Attention Mechanism." <em>Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR)</em>, June 2018.</li>
+                <li id="ref3">Facebook Research. "PyTorchVideo." <a href="https://github.com/facebookresearch/pytorchvideo/tree/main" target="_blank">https://github.com/facebookresearch/pytorchvideo/tree/main</a>, Accessed: 2024-04-15.</li>
+                <li id="ref4">Jie Lei, Liwei Wang, Yelong Shen, Dong Yu, Tamara L. Berg, and Mohit Bansal. "MART: Memory-Augmented Recurrent Transformer for Coherent Video Paragraph Captioning." <em>Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)</em>, June 2020.</li>
+                <li id="ref5">"Torchvision Models." <a href="https://pytorch.org/vision/stable/models.html" target="_blank">https://pytorch.org/vision/stable/models.html</a>, Accessed: 2024-04-30.</li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Joseph Manning Ellis. All rights reserved.</p>
+    </footer>
+
+    <!-- Custom JavaScript -->
+    <script src="../script.js"></script>
+</body>
+</html> 
