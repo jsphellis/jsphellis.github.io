@@ -9,8 +9,8 @@ const Contact: React.FC = () => {
         <h2 className="text-3xl font-bold mb-8 text-[#2c3e50]">Get In Touch</h2>
         <div className="max-w-2xl mx-auto">
           <div className="bg-white p-8 rounded-lg shadow-md">
-            <p className="text-[#34495e] text-lg mb-8">
-              I'm always open to new opportunities and interesting projects in data science and AI. Feel free to reach out!
+            <p className="text-gray-600 mb-8">
+              I&apos;m always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
             </p>
             
             <div className="space-y-4 mb-8">

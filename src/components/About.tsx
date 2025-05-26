@@ -31,11 +31,11 @@ const About: React.FC = () => {
         <h2 className="text-3xl font-bold mb-8 text-[#2c3e50]">About Me</h2>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           <div className="space-y-4">
-            <p className="text-[#34495e]">
-              I'm a Data Scientist and Machine Learning Engineer passionate about building innovative AI solutions and deploying production-ready machine learning systems. Currently pursuing a Master's in Applied Data Science at USC's Viterbi School of Engineering, I combine cutting-edge technical expertise with hands-on experience in developing and implementing AI systems at scale.
+            <p className="text-gray-600 mb-4">
+              I&apos;m a Data Scientist and Machine Learning Engineer with a passion for building intelligent systems that solve real-world problems. My expertise lies in developing and deploying machine learning models, with a particular focus on computer vision and natural language processing.
             </p>
-            <p className="text-[#34495e]">
-              With a strong foundation in Data Analytics from Chapman University, I've specialized in developing large language models, building robust RAG systems, and creating end-to-end machine learning pipelines. As an LLM Engineer at PushButton.AI and co-founder of Ovrsee, I've led the development of production ML systems, implemented scalable API services, and designed custom machine learning models that solve real-world business challenges.
+            <p className="text-gray-600 mb-4">
+              I&apos;m currently working on projects that combine my interests in sports analytics and machine learning, developing tools that help teams make data-driven decisions and gain competitive advantages.
             </p>
           </div>
           <div>

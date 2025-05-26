@@ -22,7 +22,7 @@ const Hero: React.FC = () => {
     }, 3000)
 
     return () => clearInterval(typingInterval)
-  }, [isTyping])
+  }, [isTyping, roles.length])
 
   return (
     <section id="home" className="min-h-screen flex items-center justify-center bg-[#f0f4f8] relative overflow-hidden">
@@ -47,7 +47,7 @@ const Hero: React.FC = () => {
         <h1 className={`text-4xl md:text-6xl font-bold mb-4 text-[#2c3e50] transform transition-all duration-1000 ${
           isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
         }`}>
-          Hi, I'm <span className="text-[#3498db] relative">
+          Hi, I&apos;m <span className="text-[#3498db] relative">
             Joseph Ellis
             <span className="absolute -bottom-2 left-0 w-full h-1 bg-[#3498db] transform scale-x-0 hover:scale-x-100 transition-transform duration-300" />
           </span>
