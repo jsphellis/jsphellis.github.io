@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Joseph Ellis - Data Scientist">
+    <title>Joseph Ellis - Portfolio</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="logo">
+                <a href="#home">Joseph Ellis</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#honors">Honors</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div style="text-align: center; margin-bottom: 20px;">
+                <img src="headshot.jpg" alt="Joseph Ellis Headshot" style="width: 150px; height: auto; border-radius: 50%;">
+            </div>
+            <h1>Hi, I'm <span class="highlight">Joseph Ellis</span></h1>
+            <p class="tagline">Data Scientist | Machine Learning Engineer</p>
+            <div class="cta-buttons">
+                <a href="#projects" class="btn primary">View My Work</a>
+                <a href="#contact" class="btn secondary">Contact Me</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <h2>About Me</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>I'm a Data Scientist and Machine Learning Engineer passionate about building innovative AI solutions and deploying production-ready machine learning systems. Currently pursuing a Master's in Applied Data Science at USC's Viterbi School of Engineering, I combine cutting-edge technical expertise with hands-on experience in developing and implementing AI systems at scale.</p>
+                <p>With a strong foundation in Data Analytics from Chapman University, I've specialized in developing large language models, building robust RAG systems, and creating end-to-end machine learning pipelines. As an LLM Engineer at PushButton.AI and co-founder of Ovrsee, I've led the development of production ML systems, implemented scalable API services, and designed custom machine learning models that solve real-world business challenges.</p>
+            </div>
+            <div class="education">
+                <h3>Education</h3>
+                <div class="education-item">
+                    <h4>University of Southern California</h4>
+                    <p class="degree">Master of Science in Applied Data Science</p>
+                    <p class="date">August 2024 - May 2026</p>
+                    <p class="details">Viterbi School of Engineering | GPA: 3.86</p>
+                </div>
+                <div class="education-item">
+                    <h4>Chapman University</h4>
+                    <p class="degree">Bachelor of Science in Data Analytics</p>
+                    <p class="date">August 2020 - May 2024</p>
+                    <p class="details">Fowler School of Engineering | GPA: 3.86</p>
+                    <p class="details">Minor in Business Administration</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+        <h2>Professional Experience</h2>
+        <div class="experience-content">
+            <div class="experience-item">
+                <h3>Machine Learning Engineer</h3>
+                <p class="company">PushButton.AI - Course Building Program</p>
+                <p class="date">January 2024 - Present</p>
+                <p class="location">Orange, California</p>
+                <ul class="responsibilities">
+                    <li>Developed and deployed LLM APIs with Docker and Redis on DigitalOcean, reducing API costs by 60% while ensuring scalability for high-load applications.</li>
+                    <li>Evaluated and optimized open-source HuggingFace LLMs on CUDA cloud hardware, balancing cost, latency, and accuracy for real-time AI solutions.</li>
+                    <li>Implemented high-token-output RAG systems using recursive calls and prompt engineering, increasing model output capacity by 5× and retrieval efficiency.</li>
+                    <li>Integrated web scraping with RAG workflows, enhancing document retrieval quality and increasing customer retention by 15%.</li>
+                    <li>Designed and refined LLM prompts to generate structured 10,000-word program outputs as functional HTML, ensuring readability for 6th to 12th grade levels.</li>
+                    <li>Automated agentic workflows to convert course outlines into 12 structured lessons, integrating task IDs and real-time tracking for dynamic content generation.</li>
+                    <li>Stress-tested API infrastructure to handle peak loads, optimizing request handling and minimizing downtime for high-traffic applications.</li>
+                </ul>
+            </div>
+            <div class="experience-item">
+                <h3>Co-Founder | Cloud Engineer</h3>
+                <h4>Ovrsee</h4>
+                <p class="duration">January 2024 - October 2024</p>
+                <ul class="responsibilities">
+                    <li>Develop API services via Google Cloud Functions handling TikTok OAuth workflows, processing 48+ daily requests per user</li>
+                    <li>Streamline user metric aggregation (daily/weekly/monthly) using Firebase with automated Cloud Task scheduling - achieving 90% front-end speed improvements</li>
+                    <li>Integrate API operations with Firebase to manage user authentication while structuring database storage systems for 3 customers: brand owner, manager, and creator</li>
+                    <li>Enforce encrypted key management and validations for API requests, safeguarding TikTok API access and user data integrity</li>
+                </ul>
+                <div class="project-links">
+                    <a href="https://github.com/jsphellis/Ovrsee" target="_blank"><i class="fab fa-github"></i> Code</a>
+                </div>
+            </div>
+            <div class="experience-item">
+                <h3>Data Scientist Internship</h3>
+                <p class="company">Cabrillo Marine Aquarium</p>
+                <p class="date">June 2023 - August 2023</p>
+                <p class="location">San Pedro, California</p>
+                <ul class="responsibilities">
+                    <li>Gained unique experience working with TRACKS data software, inputting, and altering animal data recorded from aquarist activity</li>
+                    <li>Visualized enrichment and welfare animal statistics for the aquarium to display around exhibits</li>
+                    <li>Set up semi-auto generation for visualizations for aquarists to access post internship period</li>
+                    <li>Learned basic feeding, cleaning, and upkeep techniques to assist aquarists with animal care around the facility as needed</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <h2>My Projects</h2>
+        <div class="project-grid">
+            <div class="project-card">
+                <h3>TikTok Virality Predictor</h3>
+                <p>Trained a computer vision model built on ResNet (2+1)D leveraging PyTorch to predict virality from TikTok video input. Wrote web scraping scripts to download and process TikTok videos using Python and Pandas to engineer virality score.</p>
+                <div class="project-links">
+                    <a href="https://github.com/jsphellis/ViralityAnalysis" target="_blank"><i class="fab fa-github"></i> Code</a>
+                </div>
+            </div>
+            <div class="project-card">
+                <h3>DrugAI-CVAE</h3>
+                <p>Built and trained an Autoregressive CVAE in PyTorch to generate novel drug molecule sequences (SMILE) based on target proteins.</p>
+                <div class="project-links">
+                    <a href="https://github.com/jsphellis/DrugAI---CVAE" target="_blank"><i class="fab fa-github"></i> Code</a>
+                </div>
+            </div>
+            <div class="project-card">
+                <h3>Human Activity in VR Research</h3>
+                <p>Designed 13 modular functions to generate advanced 3D models and visualize VR hand/object trajectories through dynamic line charts. Leveraged movement pattern visualizations to design novel rule-based system for identifying and labelling user actions. Implemented unsupervised ML models analyzing 8 movement trajectory types for VR activity prediction using spatial pattern.</p>
+                <div class="project-links">
+                    <a href="https://github.com/jsphellis" target="_blank"><i class="fab fa-github"></i> Code</a>
+                </div>
+            </div>
+            <div class="project-card">
+                <h3>NBAR</h3>
+                <p>This project provides a robust framework for analyzing NBA player performance data against betting odds. It features automated data collection from official NBA box scores, integration with betting odds APIs, and statistical modeling to identify patterns and potential value opportunities in the sports betting market.</p>
+                <div class="project-links">
+                    <a href="https://github.com/jsphellis/NBAR" target="_blank"><i class="fab fa-github"></i> Code</a>
+                </div>
+            </div>
+            <div class="project-card">
+                <h3>Game of Life</h3>
+                <p>C++ implementation of Conway's Game of Life.</p>
+                <div class="project-links">
+                    <a href="https://github.com/jsphellis/GameOfLife" target="_blank"><i class="fab fa-github"></i> Code</a>
+                </div>
+            </div>
+            <div class="project-card">
+                <h3>Pest Patrol</h3>
+                <p>Implementation of detect-net software on NVIDIA Jetson Nano to detect and spray pests like Raccoons for protection.</p>
+                <div class="project-links">
+                    <a href="https://github.com/jsphellis/PestPatrol" target="_blank"><i class="fab fa-github"></i> Code</a>
+                </div>
+            </div>
+            <div class="project-card">
+                <h3>Fire Segmentation</h3>
+                <p>U-Net model trained on a custom dataset of fire and non-fire images to segment fire in real-time video streams.</p>
+                <div class="project-links">
+                    <a href="https://github.com/jsphellis/FireSegmentation" target="_blank"><i class="fab fa-github"></i> Code</a>
+                </div>
+            </div>
+            <div class="project-card">
+                <h3>Psyche Evaluation</h3>
+                <p>Front-end and back-end development of a SQL application to evaluate psyches and provide analyses on scores. </p>
+                <p>The application includes Big-5 and Narcissism tests.</p>
+                <div class="project-links">
+                    <a href="https://github.com/jsphellis/Psyche-Evaluation" target="_blank"><i class="fab fa-github"></i> Code</a>
+                </div>
+            </div>
+            <div class="project-card">
+                <h3>Money Wicket</h3>
+                <p>MoneyWicket is a representation of modern sports data analysis applied to the game of Cricket. It utilizes Logistic Regression and regularization models like Ridge and Lasso in an attempt to create predictive models that could be used to help scout possible transfers and minimize money expenditures (only buying good players for the team).</p>
+                <div class="project-links">
+                    <a href="https://github.com/jsphellis/MoneyWicket" target="_blank"><i class="fab fa-github"></i> Code</a>
+                </div>
+            </div>
+            <div class="project-card">
+                <h3>Soccer Linear & Logistic Analysis</h3>
+                <p>Personal class project where I collected a dataset of 2018-19 English Premier League statistics and used python + pandas to put the data through different tools and models.</p>
+                <div class="project-links">
+                    <a href="https://github.com/jsphellis/Soccer_Linear-Logistic_Analysis" target="_blank"><i class="fab fa-github"></i> Code</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <h2>Skills & Technologies</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3>Programming Languages</h3>
+                <ul>
+                    <li>Python</li>
+                    <li>R</li>
+                    <li>SQL</li>
+                    <li>HTML</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3>Data Analysis & Visualization</h3>
+                <ul>
+                    <li>Pandas</li>
+                    <li>ggplot</li>
+                    <li>Plotly</li>
+                    <li>NumPy</li>
+                    <li>Matplotlib</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3>Machine Learning</h3>
+                <ul>
+                    <li>Keras</li>
+                    <li>Tensorflow</li>
+                    <li>PyTorch</li>
+                    <li>LLMs</li>
+                    <li>NLP</li>
+                    <li>Langchain</li>
+                    <li>Computer Vision</li>
+                    <li>Deep Learning</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3>Software Deployment</h3>
+                <ul>
+                    <li>Google Cloud Projects</li>
+                    <li>Docker</li>
+                    <li>git</li>
+                    <li>Amazon Web Services</li>
+                    <li>Firebase</li>
+                    <li>REST API</li>
+                    <li>Flask</li>
+                    <li>Redis</li>
+                    <li>Cloud</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Honors Section -->
+    <section id="honors" class="honors">
+        <h2>Honors & Awards</h2>
+        <div class="honors-content">
+            <div class="honors-grid">
+                <div class="honor-card">
+                    <div class="honor-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <div class="honor-info">
+                        <h3 class="honor-title">Provosts List</h3>
+                        <p class="honor-org">Chapman University</p>
+                        <p class="honor-details">GPA above 3.8 for a semester (2020-2024)</p>
+                    </div>
+                </div>
+                <div class="honor-card">
+                    <div class="honor-icon">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <div class="honor-info">
+                        <h3 class="honor-title">Program Honors</h3>
+                        <p class="honor-org">Chapman University</p>
+                    </div>
+                </div>
+                <div class="honor-card">
+                    <div class="honor-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <div class="honor-info">
+                        <h3 class="honor-title">Excellence in Computing Studies</h3>
+                        <p class="honor-org">Association for Computing Machinery</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h2>Get In Touch</h2>
+        <div class="contact-content">
+            <div class="contact-info">
+                <p>I'm always open to new opportunities and interesting projects in data science and AI. Feel free to reach out!</p>
+                <div class="contact-details">
+                    <p><i class="fas fa-map-marker-alt"></i> Los Angeles, California</p>
+                    <p><i class="fas fa-phone"></i> 502-655-6998</p>
+                    <p><i class="fas fa-envelope"></i> jsphellis.2020@gmail.com</p>
+                </div>
+                <div class="social-links">
+                    <a href="https://github.com/jsphellis" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://linkedin.com/in/jsphellis" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="2025_Resume.pdf" target="_blank"><i class="fas fa-file-pdf"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Joseph Manning Ellis. All rights reserved.</p>
+    </footer>
+
+    <!-- Custom JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
