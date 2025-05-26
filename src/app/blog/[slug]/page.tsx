@@ -26,12 +26,18 @@ export const dynamic = 'force-static'
 export const dynamicParams = false
 
 export async function generateStaticParams() {
-  return [
-    { slug: 'tiktok-virality' }
-  ]
+  return Object.keys(blogPosts).map((slug) => ({
+    slug,
+  }))
 }
 
-export default function BlogPostPage({ params }: { params: { slug: string } }) {
+interface BlogPostProps {
+  params: {
+    slug: string
+  }
+}
+
+export default function BlogPost({ params }: BlogPostProps) {
   const post = blogPosts[params.slug]
 
   if (!post) {
