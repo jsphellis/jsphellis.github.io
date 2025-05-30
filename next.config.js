@@ -4,7 +4,10 @@ const nextConfig = {
   images: {
     unoptimized: true,  // Required for static export
   },
-  basePath: '/jsphellis.github.io',
+  // Only set basePath for production (GitHub Pages)
+  ...(process.env.NODE_ENV === 'production' && {
+    basePath: '/jsphellis.github.io',
+  }),
 }
 
 module.exports = nextConfig 

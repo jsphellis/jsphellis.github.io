@@ -1,5 +1,4 @@
 import React from 'react'
-import Navbar from '@/components/Navbar'
 import BlogPostContent from './BlogPostContent'
 
 interface BlogPost {
@@ -42,7 +41,6 @@ export default async function Page({ params }: PageProps) {
   if (!post) {
     return (
       <main className="min-h-screen bg-[#f0f4f8]">
-        <Navbar />
         <div className="container mx-auto px-4 pt-32">
           <h1 className="text-3xl font-bold text-[#2c3e50]">Post not found</h1>
         </div>
@@ -52,7 +50,6 @@ export default async function Page({ params }: PageProps) {
 
   return (
     <main className="min-h-screen bg-[#f0f4f8]">
-      <Navbar />
       <BlogPostContent post={post} />
     </main>
   )

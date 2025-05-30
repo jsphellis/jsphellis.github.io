@@ -1,7 +1,6 @@
 'use client'
 
 import React from 'react'
-import Navbar from '@/components/Navbar'
 
 interface BlogPost {
   title: string
@@ -26,8 +25,6 @@ const blogPosts: BlogPost[] = [
 export default function BlogPage() {
   return (
     <main className="min-h-screen bg-[#f0f4f8]">
-      <Navbar />
-      
       {/* Blog Header */}
       <header className="pt-32 pb-16 text-center">
         <div className="container mx-auto px-4">

@@ -25,13 +25,13 @@ const Navbar: React.FC = () => {
   }
 
   const navLinks = [
-    { href: '#about', label: 'About' },
-    { href: '#experience', label: 'Experience' },
-    { href: '#projects', label: 'Projects' },
-    { href: '#skills', label: 'Skills' },
-    { href: '#honors', label: 'Honors' },
+    { href: '/#about', label: 'About' },
+    { href: '/#experience', label: 'Experience' },
+    { href: '/#projects', label: 'Projects' },
+    { href: '/#skills', label: 'Skills' },
+    { href: '/#honors', label: 'Honors' },
     { href: '/blog', label: 'Blog' },
-    { href: '#contact', label: 'Contact' }
+    { href: '/#contact', label: 'Contact' }
   ]
 
   return (
