@@ -5,6 +5,13 @@ import Image from 'next/image'
 
 const projects = [
   {
+    title: 'PLG SaaS Marketing Mix Modeling',
+    description: '• Built a full Bayesian MMM pipeline in R with adstock decay, Hill saturation, and hierarchical priors to analyze PLG SaaS marketing impact\n• Simulated realistic multi-channel data with seasonal trends and business logic to validate model assumptions and inference quality\n• Used brms and Stan to run MCMC sampling with custom priors and diagnostics, ensuring robust, reproducible statistical modeling\n• Automated visual reporting for ROI, channel attribution, and diagnostics, translating complex outputs into clear marketing insights',
+    technologies: ['R', 'Bayesian Statistics', 'Stan', 'MCMC', 'Marketing Analytics'],
+    githubLink: 'https://github.com/jsphellis/PLG-MMR-Analysis',
+    image: '/project_pics/SaaS-Business.jpg'
+  },
+  {
     title: 'ChatDB - NBA SQL RAG',
     description: '• Created a natural language–to–SQL interface using OpenAI, mapping conversational questions to structured queries with a focus on accessibility and transparency\n• Built a Streamlit and MySQL interface with query tracking and live data visuals, reducing barriers for non-technical users and demonstrating empathetic product thinking\n• Implemented secure database modification with rollback and validation, emphasizing trustworthiness and long-term maintainability\n• Designed a modular, well-documented system with onboarding in mind, reducing dev ramp-up time and showing commitment to team success',
     technologies: ['Python', 'OpenAI', 'MySQL', 'Streamlit', 'RAG'],
