@@ -14,13 +14,13 @@ const education: Education[] = [
     school: 'University of Southern California',
     degree: 'Master of Science in Applied Data Science',
     period: 'August 2024 - May 2026',
-    details: ['Viterbi School of Engineering', 'GPA: 3.86']
+    details: ['Viterbi School of Engineering', 'GPA: 3.67', 'Coursework in deep learning, data mining, database systems, data visualization, and UX design']
   },
   {
     school: 'Chapman University',
     degree: 'Bachelor of Science in Data Analytics',
     period: 'August 2020 - May 2024',
-    details: ['Fowler School of Engineering', 'GPA: 3.86', 'Minor in Business Administration']
+    details: ['Fowler School of Engineering', 'Magna Cum Laude', 'GPA: 3.87', 'Minor in Business Administration', 'Completed graduate-level Deep Learning & Computer Vision and Human-Centered Computing as an undergraduate']
   }
 ]
 
@@ -32,10 +32,13 @@ const About: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           <div className="space-y-4">
             <p className="text-gray-600 mb-4">
-              I&apos;m a Data Scientist and Machine Learning Engineer with a passion for building intelligent systems that solve real-world problems. My expertise lies in developing and deploying machine learning models, with a particular focus on computer vision and natural language processing.
+              I&apos;m a software engineer who builds AI products that hold up in production. Day to day that means owning the marketing surface of an AI business platform — social publishing integrations, AI content generation, paid advertising, and media generation — across the full stack in TypeScript, React, and Postgres.
             </p>
             <p className="text-gray-600 mb-4">
-              I&apos;m currently working on projects that combine my interests in sports analytics and machine learning, developing tools that help teams make data-driven decisions and gain competitive advantages.
+              My background is in machine learning and data science, and it still shapes how I work: I&apos;d rather measure a system than trust it. Before swapping a model or a vendor I run a controlled test; before shipping something that spends a user&apos;s money I make it fail closed. The problems I find most interesting are the ones where nothing throws an error — a silently discarded API option, a model quietly rejecting its input, an agent reporting success it didn&apos;t earn.
+            </p>
+            <p className="text-gray-600 mb-4">
+              I have a particular affinity for integrating platforms that don&apos;t want to be integrated — OAuth flows, token lifecycles, and third-party API compliance across Meta, Google, LinkedIn, X, and TikTok — and for the research side of LLM systems, from multi-agent architectures to fine-tuning and evaluation harness design.
             </p>
           </div>
           <div>

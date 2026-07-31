@@ -55,7 +55,7 @@ export default function BlogPage() {
                   </p>
                   <p className="text-[#34495e] mb-4">{post.excerpt}</p>
                   <a 
-                    href={`/blog/${post.slug}`}
+                    href={`/blog/${post.slug}/`}
                     className="text-[#3498db] hover:text-[#2980b9] font-medium inline-flex items-center"
                   >
                     Read More <i className="fas fa-arrow-right ml-2"></i>

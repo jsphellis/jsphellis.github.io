@@ -1,41 +1,47 @@
-# Personal Website
+# jsphellis.github.io
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Personal portfolio and online résumé for Joseph Ellis, served at
+[jsphellis.github.io](https://jsphellis.github.io).
 
-## About
-* Acts as portfolio/online-resume for my work
+## Stack
 
-## Getting Started
+Next.js 15 (App Router) · React 19 · TypeScript · Tailwind CSS 4
 
-First, run the development server:
+Built as a fully static site (`output: 'export'`) — no server runtime. `trailingSlash: true`
+is required so the export emits `blog/index.html` rather than `blog.html`, which keeps
+URLs with a trailing slash from 404ing on GitHub Pages.
+
+## Development
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Writes the static site to `out/`.
 
-## Learn More
+## Structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+src/app/           routes — landing page, /blog, /blog/[slug]
+src/components/    landing page sections (Hero, About, Experience, Projects,
+                   Skills, Honors, Contact) plus Navbar and BackToTop
+public/            static assets served at the site root
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Content lives in the components themselves, not in a CMS or markdown files — experience,
+projects, skills, and blog posts are typed arrays at the top of their respective files.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Anything that must be reachable by URL — the résumé PDF, images, blog reports — has to sit
+in `public/`. With `output: 'export'`, files elsewhere in the repo are not copied into `out/`.
 
-## Deploy on Vercel
+## Deployment
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Pushing to `main` triggers [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml),
+which builds the site and publishes `out/` to GitHub Pages. No manual step is needed.

@@ -11,10 +11,22 @@ interface Honor {
 
 const honors: Honor[] = [
   {
-    title: 'Provosts List',
+    title: 'Magna Cum Laude',
     organization: 'Chapman University',
-    description: 'GPA above 3.8 for a semester (2020-2024)',
+    description: 'Awarded on conferral of the BS in Data Analytics, 2024',
+    icon: 'fas fa-graduation-cap'
+  },
+  {
+    title: "Provost's List — 7 Semesters",
+    organization: 'Chapman University',
+    description: 'Earned honors standing every semester enrolled, 2020-2024, alongside one semester of Dean’s List',
     icon: 'fas fa-award'
+  },
+  {
+    title: "Dean's List",
+    organization: 'Chapman University',
+    description: 'Spring 2023',
+    icon: 'fas fa-star'
   },
   {
     title: 'Program Honors',

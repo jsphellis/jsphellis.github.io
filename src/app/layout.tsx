@@ -8,8 +8,8 @@ import BackToTop from '@/components/BackToTop'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Joseph Ellis - Data Scientist & ML Engineer',
-  description: 'Personal portfolio website showcasing my work in data science and machine learning.',
+  title: 'Joseph Ellis - Software & AI Platform Engineer',
+  description: 'Portfolio of Joseph Ellis — software engineer building production AI products, from platform integrations and agent architecture to machine learning research.',
 }
 
 export default function RootLayout({

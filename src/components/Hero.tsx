@@ -5,7 +5,7 @@ import Image from 'next/image'
 
 const Hero: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false)
-  const roles = ['Data Scientist', 'Machine Learning Engineer', 'AI Enthusiast']
+  const roles = ['Software Engineer', 'AI Platform Engineer', 'Machine Learning Engineer', 'Data Scientist']
   const [currentRole, setCurrentRole] = useState(0)
   const [isTyping, setIsTyping] = useState(true)
 
@@ -84,11 +84,11 @@ const Hero: React.FC = () => {
              className="text-[#34495e] hover:text-[#3498db] transition-colors duration-300">
             <i className="fab fa-github text-2xl"></i>
           </a>
-          <a href="https://linkedin.com/in/joseph-ellis" target="_blank" rel="noopener noreferrer"
+          <a href="https://linkedin.com/in/jsphellis" target="_blank" rel="noopener noreferrer"
              className="text-[#34495e] hover:text-[#3498db] transition-colors duration-300">
             <i className="fab fa-linkedin text-2xl"></i>
           </a>
-          <a href="mailto:jsphellis@gmail.com"
+          <a href="mailto:jsphellis.2020@gmail.com"
              className="text-[#34495e] hover:text-[#3498db] transition-colors duration-300">
             <i className="fas fa-envelope text-2xl"></i>
           </a>
