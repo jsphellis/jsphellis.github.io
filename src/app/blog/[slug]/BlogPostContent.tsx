@@ -1,15 +1,13 @@
-'use client'
-
 import React from 'react'
-import Image from 'next/image'
+import Link from 'next/link'
 
 interface BlogPost {
   title: string
   date: string
   category: string
   content: string
-  image: string
   readTime: string
+  pdf?: string
 }
 
 interface BlogPostContentProps {
@@ -18,60 +16,50 @@ interface BlogPostContentProps {
 
 export default function BlogPostContent({ post }: BlogPostContentProps) {
   return (
-    <article className="container mx-auto px-4 pt-32 pb-16">
-      <div className="max-w-4xl mx-auto">
-        <header className="mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6 text-[#2c3e50]">{post.title}</h1>
-          <div className="flex flex-wrap items-center gap-4 text-[#7f8c8d]">
-            <span className="flex items-center">
-              <i className="far fa-calendar-alt mr-2"></i>
-              {post.date}
-            </span>
-            <span className="flex items-center">
-              <i className="fas fa-tag mr-2"></i>
-              {post.category}
-            </span>
-            <span className="flex items-center">
-              <i className="far fa-clock mr-2"></i>
-              {post.readTime}
-            </span>
-          </div>
-        </header>
+    <article className="mx-auto w-full max-w-[46rem] px-6 pt-20 pb-16 sm:px-8 sm:pt-24">
+      <Link
+        href="/blog/"
+        className="font-mono text-[0.7rem] tracking-[0.06em] text-muted underline decoration-hairline decoration-1 underline-offset-4 transition-colors hover:text-accent hover:decoration-accent"
+      >
+        ← Writing
+      </Link>
 
-        <div className="mb-12">
-          <Image
-            src={post.image}
-            alt={post.title}
-            width={800}
-            height={450}
-            className="rounded-lg shadow-md w-full"
-          />
+      <header className="mt-7 border-b border-hairline pb-8">
+        <h1 className="text-balance text-[1.65rem] font-semibold leading-tight tracking-[-0.02em] sm:text-[2rem]">
+          {post.title}
+        </h1>
+        <div className="mt-5 flex flex-wrap items-baseline gap-x-4 gap-y-1 font-mono text-[0.68rem] tracking-[0.04em] text-muted">
+          <span className="tabular-nums">{post.date}</span>
+          <span>{post.category}</span>
+          <span className="tabular-nums">{post.readTime}</span>
         </div>
+      </header>
 
-        <div className="prose prose-lg max-w-none">
-          <p className="text-[#34495e] leading-relaxed">{post.content}</p>
-          
-          {/* PDF Viewer */}
+      <div className="mt-8 max-w-[38rem] space-y-5 text-[0.975rem] leading-[1.75] text-ink">
+        <p>{post.content}</p>
+      </div>
+
+      {post.pdf && (
+        <>
           <div className="mt-8">
             <a
-              href="/blog/TikTokVirality/Report.pdf"
-              className="inline-flex items-center gap-2 bg-[#3498db] text-white px-6 py-3 rounded-full hover:bg-[#2980b9] transition-colors"
+              href={post.pdf}
               download
+              className="inline-block border border-hairline px-4 py-2 font-mono text-[0.72rem] tracking-[0.04em] text-muted transition-colors hover:border-accent hover:text-accent"
             >
-              <i className="fas fa-download"></i>
-              Download PDF
+              Download the full report (PDF)
             </a>
           </div>
 
-          <div className="mt-8 h-[800px] rounded-lg shadow-md overflow-hidden">
+          <div className="mt-6 h-[80vh] min-h-[32rem] w-full overflow-hidden border border-hairline">
             <iframe
-              src="/blog/TikTokVirality/Report.pdf"
-              className="w-full h-full"
-              title="Blog Post PDF"
+              src={post.pdf}
+              className="h-full w-full"
+              title={`${post.title} — full report`}
             />
           </div>
-        </div>
-      </div>
+        </>
+      )}
     </article>
   )
-} 
+}

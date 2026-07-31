@@ -1,6 +1,90 @@
 @import "tailwindcss";
 
-/* Remove custom CSS variables that might conflict with Tailwind */
+/* ---------------------------------------------------------------------------
+   Monochrome — every value on the page is one blue hue (~208°) at a different
+   lightness. No grey, no black, no white. Dark is the default: light applies
+   only when the reader has explicitly asked for it.
+   --------------------------------------------------------------------------- */
+
+:root {
+  --ground: #0D1720;
+  --surface: #132231;
+  --ink: #D7E4EE;
+  --muted: #7A9AB3;
+  --accent: #9CC0DA;
+  --hairline: #1E3244;
+  --tint: #16283A;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --ground: #F4F7FA;
+    --surface: #FDFEFF;
+    --ink: #22384A;
+    /* 4.85:1 on --ground. Do not lighten past #56758D (4.52) — --muted carries
+       real body copy in Work and Projects, so it has to clear 4.5, not just look
+       recessive. The dark theme's muted sits at 6.12. */
+    --muted: #527087;
+    --accent: #3C6584;
+    --hairline: #DDE7EF;
+    --tint: #E6EEF5;
+  }
+}
+
+/* `inline` keeps the generated utilities pointing at the custom property, so
+   the theme swap above actually reaches bg-ground / text-ink at runtime. */
+@theme inline {
+  --color-ground: var(--ground);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-hairline: var(--hairline);
+  --color-tint: var(--tint);
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-newsreader), ui-serif, Georgia, serif;
+  --font-mono: var(--font-dm-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--ground);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--ground);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

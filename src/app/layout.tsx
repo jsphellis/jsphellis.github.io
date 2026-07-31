@@ -1,15 +1,32 @@
 import React from 'react'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Inter, Newsreader, DM_Mono } from 'next/font/google'
 import './globals.css'
-import Navbar from '@/components/Navbar'
-import BackToTop from '@/components/BackToTop'
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap',
+})
+
+const newsreader = Newsreader({
+  subsets: ['latin'],
+  variable: '--font-newsreader',
+  display: 'swap',
+  style: ['normal', 'italic'],
+})
+
+const dmMono = DM_Mono({
+  subsets: ['latin'],
+  weight: ['300', '400', '500'],
+  variable: '--font-dm-mono',
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
-  title: 'Joseph Ellis - Software & AI Platform Engineer',
-  description: 'Portfolio of Joseph Ellis — software engineer building production AI products, from platform integrations and agent architecture to machine learning research.',
+  title: 'Joseph Ellis — Software Engineer',
+  description:
+    'Software engineer building AI products that hold up in production — platform integrations, agent architecture, and the machine learning work underneath.',
 }
 
 export default function RootLayout({
@@ -18,20 +35,12 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <head>
-        <link
-          rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-          integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-          crossOrigin="anonymous"
-          referrerPolicy="no-referrer"
-        />
-      </head>
-      <body className={inter.className} suppressHydrationWarning>
-        <Navbar />
+    <html
+      lang="en"
+      className={`${inter.variable} ${newsreader.variable} ${dmMono.variable}`}
+    >
+      <body className="font-sans antialiased" suppressHydrationWarning>
         {children}
-        <BackToTop />
       </body>
     </html>
   )

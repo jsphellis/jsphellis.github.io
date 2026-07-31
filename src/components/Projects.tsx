@@ -1,198 +1,216 @@
-'use client'
-
 import React from 'react'
-import Image from 'next/image'
+import Section from './Section'
 
-interface Project {
+interface Selected {
   title: string
-  description: string
-  technologies: string[]
-  githubLink?: string
-  linkLabel?: string
+  period: string
+  body: string
+  stack: string[]
+  href?: string
   note?: string
-  image?: string
-  icon?: string
 }
 
-const projects: Project[] = [
+const selected: Selected[] = [
   {
     title: 'Multi-Agent LLM Research Framework',
-    description: '• Built a research platform for training and evaluating LLM agents playing One-Night Ultimate Werewolf — a game whose core skills are deception, persuasion, and belief tracking under incomplete information\n• Implemented the full game engine plus four agent tiers, from a random baseline to LoRA fine-tuned Mistral-7B and GPT-2, trained on 27k examples\n• Designed the reasoning modules: a claim graph tracking accusations as a relationship graph, a probabilistic belief tracker with Bayesian updates, a contradiction-detecting consistency auditor, and a moderation layer guarding against role leaks\n• Evaluated across 499 games and 5 configurations: fine-tuning raised the persuasion score +321% over baseline and consensus rate from 45% to 80%\n• Rebuilt it as a clean package (NewMafia) with the engine separated from agent infrastructure, every capability an ablatable flag, seeded runs, and per-experiment manifests for reproducibility',
-    technologies: ['Python', 'Mistral-7B', 'LoRA / PEFT', 'LangChain', 'Bayesian Modeling', 'React'],
-    githubLink: 'https://github.com/jsphellis/MetaMafia',
-    note: 'Successor rewrite: github.com/jsphellis/NewMafia',
-    icon: 'fas fa-users-viewfinder'
+    period: '2025 — 2026',
+    href: 'https://github.com/jsphellis/MetaMafia',
+    body:
+      'A research platform for training and evaluating LLM agents playing a social deduction game, where the skills that matter are deception, persuasion, and belief tracking under incomplete information. I built the game engine, four agent tiers from a random baseline up to LoRA fine-tuned Mistral-7B, and the reasoning modules underneath: a claim graph tracking accusations as a relationship graph, a probabilistic belief tracker with Bayesian updates, and a consistency auditor that detects when an agent contradicts itself. Across 499 games and five configurations, fine-tuning raised the persuasion score 321% over baseline and group consensus from 45% to 80%. Win rate, notably, discriminated nothing — it sat at 99–100% for every configuration including random agents, which is exactly why it was the wrong metric to optimize.',
+    stack: ['Python', 'Mistral-7B', 'LoRA / PEFT', 'LangChain', 'Bayesian modeling'],
+    note: 'Rebuilt as NewMafia — engine split from agent infrastructure, every capability an ablatable flag, seeded runs with a manifest per experiment.',
   },
   {
     title: 'AI Course-Generation API',
-    description: '• Built the production layer around a vendored open-source research agent (gpt-researcher) to turn a topic into a structured course — syllabus outline, then researched lesson content\n• Engineered a FastAPI service with Pydantic request validation and task status tracking, backed by a Celery + Redis async task pipeline with configurable concurrency and timeouts\n• Implemented retry logic with fallback to alternative models, HTML post-processing, and Docker Compose deployment across separate web, worker, and Redis containers\n• Supported hybrid research combining user-supplied document URLs, including PDFs, with live web search',
-    technologies: ['Python', 'FastAPI', 'Celery', 'Redis', 'Docker', 'Multi-Agent LLM'],
-    note: 'Private repository — the research agent itself is upstream open source; the production system around it is mine',
-    icon: 'fas fa-graduation-cap'
+    period: '2025',
+    body:
+      'A production API that turns a topic into a structured course — syllabus outline first, then researched lesson content — by running web research through a multi-agent pipeline. The research agent itself is vendored open source; what I built is the production system around it: a FastAPI service with request validation and task status tracking, a Celery and Redis async pipeline with configurable concurrency, retry logic that falls back to alternative models, and Docker Compose across separate web, worker, and Redis containers. It also supports hybrid research, combining user-supplied PDFs with live web search.',
+    stack: ['Python', 'FastAPI', 'Celery', 'Redis', 'Docker'],
+    note: 'Private repository.',
   },
   {
-    title: 'NBAR - Automated Sports Analytics Pipeline',
-    description: '• Shipped an installable R package analyzing NBA player performance against betting odds, backed by a daily scraping pipeline that has run unattended on a schedule for months\n• Automated box-score collection via scheduled GitHub Actions, with a cleaning and preprocessing pipeline feeding data shipped inside the package\n• Packaged properly for distribution — DESCRIPTION, NAMESPACE, .rda data, testthat coverage, installable via remotes::install_github()',
-    technologies: ['R', 'Python', 'GitHub Actions', 'CI/CD', 'Sports Analytics'],
-    githubLink: 'https://github.com/jsphellis/NBAR',
-    image: '/project_pics/nba.png'
-  },
-  {
-    title: 'ChatDB - NBA SQL RAG',
-    description: '• Created a natural language–to–SQL interface using OpenAI, mapping conversational questions to structured queries with a focus on accessibility and transparency\n• Built the full data path — scrape, dedupe, merge traditional and advanced box scores, schema design with primary keys — behind a Streamlit and MySQL interface with query tracking and live visuals\n• Implemented regex-based intent classification routing input to query, explore, or modify paths, with safety validation applied specifically to destructive queries\n• Designed a modular, well-documented system with onboarding in mind, reducing dev ramp-up time',
-    technologies: ['Python', 'OpenAI', 'MySQL', 'Streamlit', 'RAG', 'Text-to-SQL'],
-    githubLink: 'https://github.com/jsphellis/NBA-SQL-RAG',
-    image: '/project_pics/nba.png'
+    title: 'NBAR',
+    period: '2025',
+    href: 'https://github.com/jsphellis/NBAR',
+    body:
+      'An installable R package analyzing NBA player performance against betting odds, backed by a daily scraping pipeline that has run unattended on a schedule for months without my touching it. Box-score collection runs on scheduled GitHub Actions, feeding a cleaning pipeline whose output ships inside the package itself — properly packaged with testthat coverage and installable straight from GitHub.',
+    stack: ['R', 'Python', 'GitHub Actions', 'CI/CD'],
   },
   {
     title: 'TikTok Virality Predictor',
-    description: '• Fine-tuned R(2+1)D-18, a Kinetics-400 pretrained 3D CNN, to predict virality from the video itself rather than its metadata — as both a binary classifier and a continuous regressor\n• Wrote the web scraping pipeline to download and process TikTok videos, with a custom dataset handling variable-length video via padding and random sampling\n• Engineered the virality target as a composite weighting likes 40%, views 30%, shares 20%, and comments 10% — defining the target was the real intellectual work\n• Evaluated with ROC/AUC, precision-recall, confusion matrices, and MSE/RMSE/MAE, including a best/worst-prediction analysis. Accuracy was moderate; the design is the contribution',
-    technologies: ['PyTorch', 'Python', 'Pandas', 'Computer Vision', '3D CNN'],
-    githubLink: 'https://github.com/jsphellis/ViralityAnalysis',
-    image: '/project_pics/tiktok.png'
+    period: '2024 — 2025',
+    href: 'https://github.com/jsphellis/ViralityAnalysis',
+    body:
+      'Predicting whether a video goes viral from the video itself rather than its metadata, by fine-tuning a Kinetics-400 pretrained 3D CNN as both a binary classifier and a continuous regressor. The real intellectual work was defining the target: a composite weighting likes, views, shares, and comments, where deciding that shares matter more than comments is a judgment call you have to be able to defend. Accuracy was moderate and the README says so — the design is the contribution.',
+    stack: ['PyTorch', 'R(2+1)D-18', 'Computer vision', 'Pandas'],
+  },
+]
+
+interface Other {
+  title: string
+  year: string
+  blurb: string
+  href?: string
+}
+
+const others: Other[] = [
+  {
+    title: 'ChatDB',
+    year: '2025',
+    href: 'https://github.com/jsphellis/NBA-SQL-RAG',
+    blurb:
+      'Natural language to SQL over an NBA database, with intent routing and safety validation applied specifically to destructive queries.',
   },
   {
     title: 'PLG SaaS Marketing Mix Modeling',
-    description: '• Built a full Bayesian MMM pipeline in R with adstock decay, Hill saturation, and hierarchical priors to analyze PLG SaaS marketing impact\n• Simulated realistic multi-channel data with seasonal trends and business logic to validate model assumptions and inference quality\n• Used brms and Stan to run MCMC sampling with custom priors and diagnostics, ensuring robust, reproducible statistical modeling\n• Automated visual reporting for ROI, channel attribution, and diagnostics, translating complex outputs into clear marketing insights',
-    technologies: ['R', 'Bayesian Statistics', 'Stan', 'MCMC', 'Marketing Analytics'],
-    githubLink: 'https://github.com/jsphellis/PLG-MMR-Analysis',
-    image: '/project_pics/SaaS-Business.jpg'
+    year: '2025',
+    href: 'https://github.com/jsphellis/PLG-MMR-Analysis',
+    blurb:
+      'Bayesian MMM in R with adstock decay, Hill saturation, and hierarchical priors, sampled via brms and Stan.',
   },
   {
     title: 'DrugAI-CVAE',
-    description: 'Built and trained an autoregressive Conditional VAE in PyTorch to generate novel drug molecule sequences (SMILES) conditioned on target protein spikes, trained on human-valid molecules from BindingDB. Positioned explicitly as an alternative architecture to a published transformer-based approach, in collaboration with two faculty members, a statistician, and one peer.',
-    technologies: ['PyTorch', 'Generative Models', 'Sequence Modeling', 'Drug Discovery'],
-    githubLink: 'https://github.com/jsphellis/DrugAI---CVAE',
-    image: '/project_pics/drug.jpeg'
-  },
-  {
-    title: 'Fire Segmentation',
-    description: 'U-Net semantic segmentation model trained on a fire-segmentation dataset, with pickled dataset splits for reproducibility, separate training and evaluation scripts, IoU and loss curves, and Grad-CAM interpretability to verify what the model actually attends to rather than trusting the metric alone.',
-    technologies: ['PyTorch', 'U-Net', 'Computer Vision', 'Grad-CAM'],
-    githubLink: 'https://github.com/jsphellis/FireSegmentation',
-    image: '/project_pics/fire.jpg'
-  },
-  {
-    title: 'Pest Patrol',
-    description: 'Real-time object detection on an NVIDIA Jetson using SSD-MobileNet-v2 with a GStreamer camera pipeline and live FPS display, wired to a servo over GPIO PWM inside a threaded action class so actuation never blocks the inference loop. A working prototype — detection and actuation are complete, targeting logic is not.',
-    technologies: ['Python', 'NVIDIA Jetson', 'Edge ML', 'GPIO', 'Threading'],
-    githubLink: 'https://github.com/jsphellis/PestPatrol',
-    image: '/project_pics/raccoon.jpeg'
-  },
-  {
-    title: 'Human Activity in VR Research',
-    description: '• Designed 13 modular functions to generate advanced 3D models and visualize VR hand/object trajectories through dynamic line charts\n• Leveraged movement pattern visualizations to design a novel rule-based system for identifying and labelling user actions\n• Implemented unsupervised ML models analyzing 8 movement trajectory types for VR activity prediction using spatial patterns',
-    technologies: ['Python', '3D Visualization', 'Unsupervised Learning', 'VR'],
-    image: '/project_pics/VR.jpg'
-  },
-  {
-    title: 'ASL Classification',
-    description: 'CNN classifier on the ASL alphabet in TensorFlow/Keras, structured so model construction runs create, fit, and save as one flow, with a separate visualization module reusing the same preprocessing pipeline and saved training history — clean separation of model code from analysis code.',
-    technologies: ['TensorFlow', 'Keras', 'CNN', 'Computer Vision'],
-    githubLink: 'https://github.com/jsphellis/ASLClassification',
-    icon: 'fas fa-hands'
+    year: '2025',
+    href: 'https://github.com/jsphellis/DrugAI---CVAE',
+    blurb:
+      'Autoregressive conditional VAE generating novel SMILES sequences conditioned on target proteins, with two faculty collaborators.',
   },
   {
     title: 'Notion Work Scheduler',
-    description: 'Full-stack time tracking with calendar, week, and statistics views over time entries — monthly comparisons, project breakdowns, and trends — syncing to a Notion database via its API, with local storage as a fallback so the app works before Notion is configured. Ships an embeddable view plus Vercel and Railway deploy configs.',
-    technologies: ['React', 'Express', 'Notion API', 'Full-Stack'],
-    githubLink: 'https://github.com/jsphellis/notion-work-scheduler',
-    icon: 'fas fa-calendar-check'
+    year: '2025',
+    href: 'https://github.com/jsphellis/notion-work-scheduler',
+    blurb:
+      'Time tracking synced to a Notion database, with local storage fallback so it works before Notion is configured.',
+  },
+  {
+    title: 'Fire Segmentation',
+    year: '2024',
+    href: 'https://github.com/jsphellis/FireSegmentation',
+    blurb:
+      'U-Net semantic segmentation with Grad-CAM interpretability, to check what the model attends to rather than trusting the metric.',
+  },
+  {
+    title: 'Pest Patrol',
+    year: '2024',
+    href: 'https://github.com/jsphellis/PestPatrol',
+    blurb:
+      'Real-time detection on an NVIDIA Jetson driving a servo over GPIO, threaded so actuation never blocks the inference loop. A prototype.',
+  },
+  {
+    title: 'ASL Classification',
+    year: '2024',
+    href: 'https://github.com/jsphellis/ASLClassification',
+    blurb:
+      'CNN classifier on the ASL alphabet, with model code and analysis code cleanly separated over a shared preprocessing pipeline.',
+  },
+  {
+    title: 'Human Activity in VR',
+    year: '2024',
+    blurb:
+      'Modular 3D visualization of VR hand and object trajectories, feeding a rule-based labelling system and unsupervised activity prediction.',
   },
   {
     title: 'Psyche Evaluation',
-    description: 'Python and MySQL application administering the Big Five and NPI psychometric inventories: scoring, user management, aggregate averages, Excel export, and per-trait background information, with psychometric sources cited.',
-    technologies: ['Python', 'MySQL', 'Psychometrics'],
-    githubLink: 'https://github.com/jsphellis/Psyche-Evaluation',
-    image: '/project_pics/brain.jpg'
+    year: '2023',
+    href: 'https://github.com/jsphellis/Psyche-Evaluation',
+    blurb:
+      'Python and MySQL application administering the Big Five and NPI inventories, with scoring, aggregates, and export.',
   },
   {
     title: 'Money Wicket',
-    description: 'Modern sports data analysis applied to cricket, using logistic regression with Ridge and Lasso regularization to build predictive models for scouting possible transfers and minimizing money expenditure — the first regularization work in my portfolio.',
-    technologies: ['R', 'Ridge / Lasso', 'Machine Learning', 'Sports Analytics'],
-    githubLink: 'https://github.com/jsphellis/MoneyWicket',
-    image: '/project_pics/wicket.jpg'
+    year: '2022',
+    href: 'https://github.com/jsphellis/MoneyWicket',
+    blurb:
+      'Cricket transfer scouting via logistic regression with Ridge and Lasso regularization.',
   },
   {
     title: 'Soccer Linear & Logistic Analysis',
-    description: 'Self-sourced a dataset of 2018-19 English Premier League statistics and ran it through linear and logistic models in pandas, with a written report and a recorded video presentation.',
-    technologies: ['Python', 'Pandas', 'Regression', 'Sports Analytics'],
-    githubLink: 'https://github.com/jsphellis/Soccer_Linear-Logistic_Analysis',
-    image: '/project_pics/soccer.jpg'
-  }
+    year: '2022',
+    href: 'https://github.com/jsphellis/Soccer_Linear-Logistic_Analysis',
+    blurb:
+      'A self-sourced Premier League dataset run through linear and logistic models in pandas.',
+  },
 ]
 
-const Projects: React.FC = () => {
-  return (
-    <section id="projects" className="py-20 bg-white">
-      <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center mb-12 text-[#2c3e50]">My Projects</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col transform transition-all duration-300 hover:scale-105 hover:shadow-xl"
-            >
-              <div className="relative h-48 w-full">
-                {project.image ? (
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    className="object-cover"
-                  />
-                ) : (
-                  <div className="h-full w-full flex items-center justify-center bg-gradient-to-br from-[#2c3e50] to-[#3498db]">
-                    <i className={`${project.icon ?? 'fas fa-code'} text-5xl text-white/90`}></i>
-                  </div>
-                )}
-              </div>
-              <div className="p-6 flex flex-col flex-1">
-                <h3 className="text-xl font-semibold mb-2 text-[#2c3e50]">{project.title}</h3>
-                <p className="text-gray-600 mb-4 whitespace-pre-line">{project.description}</p>
-                {project.note && (
-                  <p className="text-sm italic text-[#7f8c8d] mb-4">{project.note}</p>
-                )}
-                <div className="flex flex-wrap gap-2 mb-4 mt-auto">
-                  {project.technologies.map((tech, techIndex) => (
-                    <span
-                      key={techIndex}
-                      className="px-3 py-1 bg-[#3498db] text-white text-sm rounded-full hover:bg-[#2980b9] transition-colors duration-300"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-                {project.githubLink && (
-                  <a
-                    href={project.githubLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center text-[#3498db] hover:text-[#2980b9] transition-colors duration-300"
-                  >
-                    {project.linkLabel ?? 'View Code'}
-                    <svg
-                      className="w-4 h-4 ml-2 transform transition-transform duration-300 group-hover:translate-x-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                      />
-                    </svg>
-                  </a>
-                )}
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  )
-}
+const linkStyle =
+  'underline decoration-hairline decoration-1 underline-offset-4 transition-colors hover:text-accent hover:decoration-accent'
+
+const Projects: React.FC = () => (
+  <Section id="projects" label="Selected Projects">
+    <div className="space-y-11">
+      {selected.map((p) => (
+        <article key={p.title}>
+          <div className="flex flex-col gap-x-6 gap-y-1 sm:flex-row sm:items-baseline sm:justify-between">
+            <h3 className="text-[0.975rem] font-semibold tracking-[-0.005em]">
+              {p.href ? (
+                <a
+                  href={p.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={linkStyle}
+                >
+                  {p.title}
+                </a>
+              ) : (
+                p.title
+              )}
+            </h3>
+            <p className="shrink-0 font-mono text-[0.68rem] tabular-nums tracking-[0.04em] text-muted">
+              {p.period}
+            </p>
+          </div>
+
+          <p className="mt-3 max-w-[38rem] text-[0.925rem] leading-[1.7] text-ink">
+            {p.body}
+          </p>
+
+          {p.note && (
+            <p className="mt-2.5 max-w-[38rem] text-[0.825rem] leading-[1.6] text-muted italic">
+              {p.note}
+            </p>
+          )}
+
+          <p className="mt-3.5 font-mono text-[0.68rem] tracking-[0.02em] text-muted">
+            {p.stack.join('  ·  ')}
+          </p>
+        </article>
+      ))}
+    </div>
+
+    <h3 className="mt-14 mb-6 font-mono text-[0.68rem] uppercase tracking-[0.18em] text-muted">
+      Everything Else
+    </h3>
+
+    <ul className="border-t border-hairline">
+      {others.map((o) => (
+        <li
+          key={o.title}
+          className="grid grid-cols-1 gap-x-6 gap-y-1 border-b border-hairline py-4 sm:grid-cols-[minmax(0,13rem)_1fr_auto] sm:items-baseline"
+        >
+          <span className="text-[0.9rem] font-medium">
+            {o.href ? (
+              <a
+                href={o.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={linkStyle}
+              >
+                {o.title}
+              </a>
+            ) : (
+              o.title
+            )}
+          </span>
+          <span className="text-[0.85rem] leading-[1.6] text-muted">
+            {o.blurb}
+          </span>
+          <span className="font-mono text-[0.68rem] tabular-nums text-muted">
+            {o.year}
+          </span>
+        </li>
+      ))}
+    </ul>
+  </Section>
+)
 
 export default Projects
