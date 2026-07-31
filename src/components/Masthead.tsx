@@ -1,5 +1,4 @@
 import React from 'react'
-import Image from 'next/image'
 import Link from 'next/link'
 
 const links = [
@@ -13,18 +12,27 @@ const links = [
 const linkStyle =
   'text-muted underline decoration-hairline decoration-1 underline-offset-4 transition-colors hover:text-accent hover:decoration-accent'
 
+// Split server-side so the staggered entrance needs no client JavaScript.
+const thesis =
+  'I build AI products that hold up in production — and I’d rather measure a system than trust it.'.split(
+    ' '
+  )
+
 const Masthead: React.FC = () => (
   <header className="pb-12 sm:pb-14">
     <div className="flex items-center gap-5">
       {/* Toned into the one-hue system at rest, full colour on hover — the
           photo is the only thing on the page that isn't already this blue. */}
       <div className="group relative shrink-0 overflow-hidden rounded-[3px] border border-hairline">
-        <Image
+        {/* Plain img on purpose: images.unoptimized is on, so next/image adds
+            ~5kB of client runtime and optimizes nothing for one fixed asset. */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
           src="/headshot.jpg"
           alt="Joseph Ellis"
           width={72}
           height={72}
-          priority
+          decoding="async"
           className="h-[72px] w-[72px] object-cover [filter:grayscale(1)_sepia(0.32)_hue-rotate(172deg)_saturate(1.15)] transition-[filter] duration-500 ease-out hover:[filter:none]"
         />
       </div>
@@ -40,8 +48,16 @@ const Masthead: React.FC = () => (
     </div>
 
     <p className="mt-7 max-w-[34rem] font-display text-[1.3rem] leading-[1.45] text-ink sm:text-[1.45rem]">
-      I build AI products that hold up in production — and I&apos;d rather
-      measure a system than trust it.
+      {thesis.map((word, i) => (
+        <span
+          key={i}
+          className="thesis-word"
+          style={{ animationDelay: `${120 + i * 38}ms` }}
+        >
+          {word}
+          {i < thesis.length - 1 ? ' ' : ''}
+        </span>
+      ))}
     </p>
 
     <nav className="mt-7 flex flex-wrap gap-x-5 gap-y-2 text-[0.85rem]">

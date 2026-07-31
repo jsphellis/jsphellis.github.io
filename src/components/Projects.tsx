@@ -50,12 +50,14 @@ interface Other {
   title: string
   year: string
   blurb: string
+  stack: string
   href?: string
 }
 
 const others: Other[] = [
   {
     title: 'ChatDB',
+    stack: 'Python · OpenAI · MySQL · Streamlit',
     year: '2025',
     href: 'https://github.com/jsphellis/NBA-SQL-RAG',
     blurb:
@@ -63,6 +65,7 @@ const others: Other[] = [
   },
   {
     title: 'PLG SaaS Marketing Mix Modeling',
+    stack: 'R · Stan · brms · Bayesian inference',
     year: '2025',
     href: 'https://github.com/jsphellis/PLG-MMR-Analysis',
     blurb:
@@ -70,6 +73,7 @@ const others: Other[] = [
   },
   {
     title: 'DrugAI-CVAE',
+    stack: 'PyTorch · Conditional VAE · SMILES',
     year: '2025',
     href: 'https://github.com/jsphellis/DrugAI---CVAE',
     blurb:
@@ -77,6 +81,7 @@ const others: Other[] = [
   },
   {
     title: 'Notion Work Scheduler',
+    stack: 'React · Express · Notion API',
     year: '2025',
     href: 'https://github.com/jsphellis/notion-work-scheduler',
     blurb:
@@ -84,6 +89,7 @@ const others: Other[] = [
   },
   {
     title: 'Fire Segmentation',
+    stack: 'PyTorch · U-Net · Grad-CAM',
     year: '2024',
     href: 'https://github.com/jsphellis/FireSegmentation',
     blurb:
@@ -91,6 +97,7 @@ const others: Other[] = [
   },
   {
     title: 'Pest Patrol',
+    stack: 'Python · NVIDIA Jetson · GPIO · Threading',
     year: '2024',
     href: 'https://github.com/jsphellis/PestPatrol',
     blurb:
@@ -98,6 +105,7 @@ const others: Other[] = [
   },
   {
     title: 'ASL Classification',
+    stack: 'TensorFlow · Keras · CNN',
     year: '2024',
     href: 'https://github.com/jsphellis/ASLClassification',
     blurb:
@@ -105,12 +113,14 @@ const others: Other[] = [
   },
   {
     title: 'Human Activity in VR',
+    stack: 'Python · Unsupervised ML · 3D visualization',
     year: '2024',
     blurb:
       'Modular 3D visualization of VR hand and object trajectories, feeding a rule-based labelling system and unsupervised activity prediction.',
   },
   {
     title: 'Psyche Evaluation',
+    stack: 'Python · MySQL · Psychometrics',
     year: '2023',
     href: 'https://github.com/jsphellis/Psyche-Evaluation',
     blurb:
@@ -118,6 +128,7 @@ const others: Other[] = [
   },
   {
     title: 'Money Wicket',
+    stack: 'R · Ridge / Lasso · Logistic regression',
     year: '2022',
     href: 'https://github.com/jsphellis/MoneyWicket',
     blurb:
@@ -125,6 +136,7 @@ const others: Other[] = [
   },
   {
     title: 'Soccer Linear & Logistic Analysis',
+    stack: 'Python · pandas · Regression',
     year: '2022',
     href: 'https://github.com/jsphellis/Soccer_Linear-Logistic_Analysis',
     blurb:
@@ -185,7 +197,7 @@ const Projects: React.FC = () => (
       {others.map((o) => (
         <li
           key={o.title}
-          className="grid grid-cols-1 gap-x-6 gap-y-1 border-b border-hairline py-4 sm:grid-cols-[minmax(0,13rem)_1fr_auto] sm:items-baseline"
+          className="group grid grid-cols-1 gap-x-6 gap-y-1 border-b border-hairline py-4 sm:grid-cols-[minmax(0,13rem)_1fr_auto] sm:items-baseline"
         >
           <span className="text-[0.9rem] font-medium">
             {o.href ? (
@@ -203,6 +215,11 @@ const Projects: React.FC = () => (
           </span>
           <span className="text-[0.85rem] leading-[1.6] text-muted">
             {o.blurb}
+            {/* Hidden until hover on pointer devices, always shown on touch —
+                where there is no hover state to reward. */}
+            <span className="mt-1.5 block font-mono text-[0.62rem] tracking-[0.02em] text-accent transition-opacity duration-200 [@media(hover:hover)]:opacity-0 [@media(hover:hover)]:group-focus-within:opacity-100 [@media(hover:hover)]:group-hover:opacity-100">
+              {o.stack}
+            </span>
           </span>
           <span className="font-mono text-[0.68rem] tabular-nums text-muted">
             {o.year}

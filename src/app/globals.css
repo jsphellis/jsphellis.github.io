@@ -14,6 +14,7 @@
   --accent: #9CC0DA;
   --hairline: #1E3244;
   --tint: #16283A;
+  --grain-opacity: 0.055;
 }
 
 @media (prefers-color-scheme: light) {
@@ -28,6 +29,8 @@
     --accent: #3C6584;
     --hairline: #DDE7EF;
     --tint: #E6EEF5;
+    /* Dark grain lightens, light grain darkens — the light theme needs less. */
+    --grain-opacity: 0.03;
   }
 }
 
@@ -58,6 +61,76 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+}
+
+/* ---------------------------------------------------------------------------
+   Grain. Large flat fields of a single colour read as dead on a good display;
+   a couple of percent of desaturated noise gives the ground texture. Inline
+   SVG, so it costs no request and no JavaScript.
+   --------------------------------------------------------------------------- */
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: var(--grain-opacity);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ---------------------------------------------------------------------------
+   Scroll reveal — a fade and a 8px rise, driven entirely by the scroll
+   position. Guarded by @supports so browsers without scroll-driven animations
+   simply render the content: nothing is ever hidden without a way back.
+   --------------------------------------------------------------------------- */
+
+@keyframes reveal-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      animation: reveal-in linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 38%;
+    }
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   The one orchestrated moment: the opening line resolves word by word on first
+   paint. Nothing else on the page animates in, which is what keeps it a
+   decision rather than a theme.
+   --------------------------------------------------------------------------- */
+
+@keyframes word-in {
+  from {
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    filter: none;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .thesis-word {
+    display: inline-block;
+    opacity: 0;
+    animation: word-in 0.55s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+  }
 }
 
 ::selection {
