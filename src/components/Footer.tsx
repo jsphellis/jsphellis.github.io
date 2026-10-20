@@ -6,8 +6,7 @@ const linkStyle =
 const Footer: React.FC = () => (
   <footer id="contact" className="mt-16 border-t border-hairline pt-10 pb-4">
     <p className="max-w-[34rem] font-display text-[1.15rem] leading-[1.5] text-ink">
-      Open to interesting problems — particularly ones where the system is
-      quietly lying about whether it worked.
+      Have a project or a role in mind? I&apos;d be glad to hear about it.
     </p>
 
     <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-[0.85rem] text-muted">
@@ -32,8 +31,8 @@ const Footer: React.FC = () => (
       </a>
     </div>
 
-    <p className="mt-10 font-mono text-[0.66rem] tracking-[0.04em] text-muted">
-      Next.js · Tailwind · Newsreader, Inter &amp; DM Mono · Los Angeles
+    <p className="mt-10 font-mono text-xs tracking-[0.04em] text-muted">
+      Joseph Ellis · Los Angeles
     </p>
   </footer>
 )

@@ -13,7 +13,7 @@ interface SectionProps {
 const Section: React.FC<SectionProps> = ({ id, label, children }) => (
   <section id={id} className="reveal border-t border-hairline pt-10 sm:pt-12">
     {label && (
-      <h2 className="mb-7 font-mono text-[0.68rem] uppercase tracking-[0.18em] text-muted">
+      <h2 className="mb-7 font-mono text-xs uppercase tracking-[0.18em] text-muted">
         {label}
       </h2>
     )}

@@ -1,47 +1,39 @@
-# jsphellis.github.io
+# Joseph Ellis portfolio
 
-Personal portfolio and online résumé for Joseph Ellis, served at
-[jsphellis.github.io](https://jsphellis.github.io).
-
-## Stack
-
-Next.js 15 (App Router) · React 19 · TypeScript · Tailwind CSS 4
-
-Built as a fully static site (`output: 'export'`) — no server runtime. `trailingSlash: true`
-is required so the export emits `blog/index.html` rather than `blog.html`, which keeps
-URLs with a trailing slash from 404ing on GitHub Pages.
+A minimal portfolio and separate writing space, built with Next.js 15, React 19,
+TypeScript, and Tailwind CSS 4. The site exports static HTML for GitHub Pages.
 
 ## Development
 
-```bash
-npm install
+```sh
+npm ci
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
-
-```bash
+```sh
+npm run lint
 npm run build
 ```
 
-Writes the static site to `out/`.
+The production export is written to `out/`. Keep `trailingSlash: true` so routes
+such as `/blog/` and `/projects/chatdb/` export to directories with `index.html`.
 
-## Structure
+## Content
 
-```
-src/app/           routes — landing page, /blog, /blog/[slug]
-src/components/    landing page sections (Hero, About, Experience, Projects,
-                   Skills, Honors, Contact) plus Navbar and BackToTop
-public/            static assets served at the site root
-```
+- `src/components/`: introduction, selected projects, experience, and background.
+- `src/data/projects.ts`: homepage summaries and project write-ups.
+- `src/data/posts.ts`: blog metadata and article content.
+- `src/app/projects/[slug]/`: static project pages.
+- `src/app/blog/`: separate writing index and articles.
+- `src/app/globals.css`: theme tokens, typography helpers, and motion.
+- `public/`: intentionally public assets, including `Joseph-Ellis-Resume.pdf`.
 
-Content lives in the components themselves, not in a CMS or markdown files — experience,
-projects, skills, and blog posts are typed arrays at the top of their respective files.
-
-Anything that must be reachable by URL — the résumé PDF, images, blog reports — has to sit
-in `public/`. With `output: 'export'`, files elsewhere in the repo are not copied into `out/`.
+The résumé served by this site is a public edition without employer-internal
+metrics. Keep application-specific résumés and working notes outside `public/`.
+Everything inside `public/` is copied to the published site.
 
 ## Deployment
 
-Pushing to `main` triggers [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml),
-which builds the site and publishes `out/` to GitHub Pages. No manual step is needed.
+Pushing to `main` triggers `.github/workflows/deploy.yml`, which builds and
+publishes `out/` to GitHub Pages. Local branch changes are not deployed until
+merged and pushed.

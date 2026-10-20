@@ -24,9 +24,9 @@ const dmMono = DM_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'Joseph Ellis — Software Engineer',
+  title: 'Joseph Ellis — AI Software Engineer',
   description:
-    'Software engineer building AI products that hold up in production — platform integrations, agent architecture, and the machine learning work underneath.',
+    'Joseph Ellis, software engineer working on AI products, platform integrations, and machine learning. Explore selected projects and experience.',
 }
 
 export default function RootLayout({
@@ -39,7 +39,7 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${newsreader.variable} ${dmMono.variable}`}
     >
-      <body className="font-sans antialiased" suppressHydrationWarning>
+      <body className="font-sans antialiased">
         {children}
       </body>
     </html>

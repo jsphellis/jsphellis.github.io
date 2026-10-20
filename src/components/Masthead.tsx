@@ -5,8 +5,8 @@ const links = [
   { href: 'https://github.com/jsphellis', label: 'GitHub', external: true },
   { href: 'https://linkedin.com/in/jsphellis', label: 'LinkedIn', external: true },
   { href: 'mailto:jsphellis.2020@gmail.com', label: 'Email', external: true },
-  { href: '/2025_Resume.pdf', label: 'Résumé', external: true },
-  { href: '/blog/', label: 'Blog', external: false },
+  { href: '/Joseph-Ellis-Resume.pdf', label: 'Résumé', external: true },
+  { href: '/blog/', label: 'Writing', external: false },
 ]
 
 const linkStyle =
@@ -14,15 +14,13 @@ const linkStyle =
 
 // Split server-side so the staggered entrance needs no client JavaScript.
 const thesis =
-  'I build AI products that hold up in production — and I’d rather measure a system than trust it.'.split(
+  'I build AI products. The model is usually the easy half.'.split(
     ' '
   )
 
 const Masthead: React.FC = () => (
   <header className="pb-12 sm:pb-14">
     <div className="flex items-center gap-5">
-      {/* Toned into the one-hue system at rest, full colour on hover — the
-          photo is the only thing on the page that isn't already this blue. */}
       <div className="group relative shrink-0 overflow-hidden rounded-[3px] border border-hairline">
         {/* Plain img on purpose: images.unoptimized is on, so next/image adds
             ~5kB of client runtime and optimizes nothing for one fixed asset. */}
@@ -30,10 +28,10 @@ const Masthead: React.FC = () => (
         <img
           src="/headshot.jpg"
           alt="Joseph Ellis"
-          width={72}
-          height={72}
+          width={80}
+          height={80}
           decoding="async"
-          className="h-[72px] w-[72px] object-cover [filter:grayscale(1)_sepia(0.32)_hue-rotate(172deg)_saturate(1.15)] transition-[filter] duration-500 ease-out hover:[filter:none]"
+          className="h-20 w-20 object-cover"
         />
       </div>
 
@@ -41,8 +39,10 @@ const Masthead: React.FC = () => (
         <h1 className="text-[1.6rem] font-semibold tracking-[-0.02em] sm:text-[1.75rem]">
           Joseph Ellis
         </h1>
-        <p className="mt-1.5 font-mono text-[0.72rem] tracking-[0.02em] text-muted">
-          Software Engineer at Buildy · Los Angeles
+        <p className="mt-1.5 font-mono text-xs leading-relaxed text-muted">
+          <span className="block sm:inline">AI Software Engineer at Buildy</span>
+          <span className="hidden sm:inline"> · </span>
+          <span className="block whitespace-nowrap sm:inline">Los Angeles</span>
         </p>
       </div>
     </div>
@@ -60,7 +60,17 @@ const Masthead: React.FC = () => (
       ))}
     </p>
 
-    <nav className="mt-7 flex flex-wrap gap-x-5 gap-y-2 text-[0.85rem]">
+    <p className="mt-6 max-w-[38rem] text-[0.95rem] leading-[1.7]">
+      I have a background in machine learning and data science. My own projects
+      explore language-model agents, computer vision, and making data easier to
+      work with.
+    </p>
+
+    <p className="mt-3 text-sm leading-relaxed text-muted">
+      Mostly TypeScript, Python, React, and PostgreSQL.
+    </p>
+
+    <nav aria-label="Contact and writing" className="mt-7 flex flex-wrap gap-x-5 gap-y-3 text-sm">
       {links.map((link) =>
         link.external ? (
           <a
