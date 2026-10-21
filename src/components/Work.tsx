@@ -19,9 +19,9 @@ const roles = [
     takeaway: 'Where I started treating model choice as an engineering decision rather than a preference.',
   },
   {
-    company: 'Ovrsee', title: 'Co-Founder, Backend Engineer', period: 'Apr – Oct 2024',
+    company: 'Ovrsee', title: 'Co-Founder, Backend Engineer', period: 'May – Oct 2024',
     summary: 'Built the backend for a TikTok creator analytics product, including account connection, scheduled data collection, and reporting with Firebase and Google Cloud Functions.',
-    takeaway: 'The same TikTok auth and token-refresh problem I would meet again two years later.',
+    takeaway: 'The same TikTok auth and token-refresh problem I would meet again eighteen months later.',
   },
   {
     company: 'Cabrillo Marine Aquarium', title: 'Data Science Intern', period: 'Jun – Aug 2023',
